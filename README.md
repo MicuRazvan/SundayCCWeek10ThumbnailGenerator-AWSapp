@@ -14,3 +14,31 @@ For this weekend we decided on a AWS app and went with a Thumbnail Generator usi
 ## Features
 *   Converts all the images from /imagesToConvert directory into Thumbnails and saves them in /convertedImages directory.
 *   You can set manually the sizes you want to be converted in by modifying THUMBNAIL_HEIGHT and THUMBNAIL_WIDTH in ImageProcessor.java
+
+## How to run it
+
+To avoid making your own AWS account I added docker to it.
+
+### Prerequisites
+
+-   [Docker](https://www.docker.com/get-started) must be installed and running.
+
+### 1. Build the Docker Image
+
+From the root of the project directory, run the following command. This will create a local Docker image named `thumbnail-generator`.
+
+```bash
+docker build -t thumbnail-generator .
+```
+
+### 2. Run the Docker Image
+
+On Linux or macOS:
+```bash
+docker run --rm -v "$(pwd)/imagesToConvert":/app/imagesToConvert -v "$(pwd)/convertedImages":/app/convertedImages thumbnail-generator
+```
+
+On Windows (Command Prompt):
+```bash
+docker run --rm -v "%cd%/imagesToConvert":/app/imagesToConvert -v "%cd%/convertedImages":/app/convertedImages thumbnail-generator
+```
