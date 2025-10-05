@@ -10,12 +10,12 @@ import java.io.InputStream;
 //creates the thumbnail.
 public class ImageProcessor {
 
-    private static final int THUMBNAIL_SIZE = 200;
+    private static final int THUMBNAIL_HEIGHT = 200, THUMBNAIL_WIDTH = 200;
 
     public ByteArrayOutputStream createThumbnail(InputStream inputStream) throws IOException {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         Thumbnails.of(inputStream)
-                .size(THUMBNAIL_SIZE, THUMBNAIL_SIZE)
+                .size(THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT)
                 .outputFormat("jpg")
                 .toOutputStream(outputStream);
         return outputStream;
